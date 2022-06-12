@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 class Calculator extends Component {
@@ -10,127 +10,129 @@ class Calculator extends Component {
     }
   }
 
+  //mendapatkan inputan dari user
   masukkanAngka = (value) => {
     if (this.state.hitung == 0) {
       this.setState({ hitung: value })
     }
     else {
-      this.setState({ hitung: this.state.hitung + '' + value })
+      this.setState({ hitung: this.state.hitung + '' + value }) // conver to string, supaya tidak terjadi penjumlahan data
     }
   }
 
+  //untuk mendapatkan hasil
   hitungHasil = () => {
-    let hasil = eval(this.state.hitung)
+    let hasil = eval(this.state.hitung) //eval  digunakan untuk mendapatkan hasil sesuai inputan 
     this.setState({ hitung: hasil })
   }
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: '#FFA0A0' }}>
-        <StatusBar style="auto" />
+      <View style={style.containerMain}>
 
-        <View style={{ flex: 0.5, justifyContent: 'center' }}>
-          <Text style={{ color: 'black', fontSize: 24, textAlign: 'right', backgroundColor: 'white', height: '5rem' }}>{this.state.hitung}</Text>
+        <Text style={style.displayText}>Display</Text>
+        <View style={style.header}>
+          <Text style={style.inputHasil}>{this.state.hitung}</Text>
         </View>
 
-        <View style={{ flex: 1, marginTop: '10rem' }}>
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+        <View style={style.container}>
+          <View style={style.main}>
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(1)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>1</Text>
+              <Text style={style.text}>1</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(2)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>2</Text>
+              <Text style={style.text}>2</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnMaron}
               onPress={() => this.masukkanAngka('-')}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>-</Text>
+              <Text style={style.text}>-</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnMaron}
               onPress={() => this.masukkanAngka('+')}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>+</Text>
+              <Text style={style.text}>+</Text>
             </TouchableOpacity>
           </View>
 
-          <View style={{ flexDirection: 'row', marginVertical: 10 }}>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+          <View style={style.hdr2}>
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(3)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>3</Text>
+              <Text style={style.text}>3</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(4)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>4</Text>
+              <Text style={style.text}>4</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnMaron}
               onPress={() => this.masukkanAngka('/')}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>/</Text>
+              <Text style={style.text}>/</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnMaron}
               onPress={() => this.masukkanAngka('*')}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>*</Text>
+              <Text style={style.text}>*</Text>
             </TouchableOpacity>
           </View>
 
           <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(5)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>5</Text>
+              <Text style={style.text}>5</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(6)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>6</Text>
+              <Text style={style.text}>6</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnMaron}
               onPress={() => this.masukkanAngka('%')}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>%</Text>
+              <Text style={style.text}>%</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnMaron}
               onPress={() => this.hitungHasil()}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>=</Text>
+              <Text style={style.text}>=</Text>
             </TouchableOpacity>
           </View>
 
-          <View style={{ flexDirection: 'row', marginVertical: 10 }}>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+          <View style={style.hdr2}>
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(7)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>7</Text>
+              <Text style={style.text}>7</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#FF5757', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(8)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>8</Text>
+              <Text style={style.text}>8</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(9)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>9</Text>
+              <Text style={style.text}>9</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#930707', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.btnRed}
               onPress={() => this.masukkanAngka(0)}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>0</Text>
+              <Text style={style.text}>0</Text>
             </TouchableOpacity>
           </View>
 
           <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: 'blue', padding: 10, justifyContent: 'center', alignItems: 'center' }}
+            <TouchableOpacity style={style.clear}
               onPress={() => this.setState({ hitung: 0 })}
             >
-              <Text style={{ color: 'white', fontSize: 24 }}>Clear</Text>
+              <Text style={style.text}>Clear</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -141,3 +143,74 @@ class Calculator extends Component {
 }
 
 export default Calculator;
+
+const style = StyleSheet.create({
+  containerMain: {
+    backgroundColor: '#FFA0A0',
+    padding: 20,
+    height: '40rem'
+  },
+  header: {
+    flex: 1,
+    justifyContent: 'center',
+    marginTop: '-6rem'
+  },
+  inputHasil: {
+    color: 'black',
+    fontSize: 24,
+    textAlign: 'right',
+    backgroundColor: 'white',
+    height: '5rem',
+    borderRadius: 5
+  },
+  container: {
+    flex: 1,
+    marginTop: '-5rem',
+    position: 'relative'
+  },
+  main: {
+    flexDirection: 'row'
+  },
+  btnRed: {
+    flex: 1,
+    backgroundColor: '#FF5757',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    margin: 3
+  },
+  btnMaron: {
+    flex: 1,
+    backgroundColor: '#930707',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    margin: 3
+
+  },
+  text: {
+    color: 'white',
+    fontSize: 24
+  },
+  hdr2: {
+    flexDirection: 'row',
+    marginVertical: 10
+  },
+  clear: {
+    flex: 1,
+    backgroundColor: 'salmon',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5
+  },
+  displayText: {
+    position: 'absolute',
+    marginTop: '2rem',
+    color: 'white',
+    fontSize: 15
+  }
+
+})
